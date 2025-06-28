@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Delivery Time Prediction</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 20px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+      }
+      label {
+        display: block;
+        margin-top: 15px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px;
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Delivery Time Prediction</h2>
+
+    <form action="/predict" method="post">
+      <label for="distance_km">Distance (in km):</label>
+      <input
+        type="number"
+        step="0.01"
+        id="distance_km"
+        name="distance_km"
+        required
+      />
+
+      <label for="weather">Weather:</label>
+      <select id="weather" name="weather" required>
+        <option value="" disabled selected hidden>Select Weather</option>
+        <option value="Clear">Clear</option>
+        <option value="Rainy">Rainy</option>
+        <option value="Foggy">Foggy</option>
+        <option value="Windy">Windy</option>
+      </select>
+
+      <label for="traffic">Traffic Level:</label>
+      <select id="traffic" name="traffic" required>
+        <option value="" disabled selected hidden>Select Traffic Level</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <label for="timeofday">Time of Day:</label>
+      <select id="timeofday" name="timeofday" required>
+        <option value="" disabled selected hidden>Select Time of Day</option>
+        <option value="Morning">Morning</option>
+        <option value="Afternoon">Afternoon</option>
+        <option value="Evening">Evening</option>
+        <option value="Night">Night</option>
+      </select>
+
+      <label for="food_preptime">Food Preparation Time (in minutes):</label>
+      <input
+        type="number"
+        step="0.01"
+        id="food_preptime"
+        name="food_preptime"
+        required
+      />
+
+      <button type="submit">Predict Delivery Time</button>
+    </form>
+    <br />
+    <br />
+    {% if error %}
+    <p style="color: red"><strong>{{ error }}</strong></p>
+    {% endif %}
+  </body>
+</html>

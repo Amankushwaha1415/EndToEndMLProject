@@ -3,5 +3,6 @@ numpy
 seaborn
 scikit-learn
 dill
+flask
 # -e . 
 # only use this  -e . 1 time at the start to build the package when you want to install other packages then first comment it then start install.....as we do not want to build the package again and again.....
